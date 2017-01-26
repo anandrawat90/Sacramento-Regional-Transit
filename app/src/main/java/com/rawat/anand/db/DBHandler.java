@@ -79,7 +79,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public List<BusStop> getAllBusStops() {
         SQLiteDatabase db = getWritableDatabase();
         ArrayList<BusStop> stops = null;
-        Cursor cursor = db.rawQuery(DBConstants.SELECT_ALL_QUERY,null);
+        Cursor cursor = db.rawQuery(DBConstants.SELECT_ALL_QUERY, null);
         if (cursor.moveToFirst()) {
             stops = new ArrayList<BusStop>();
             while (!cursor.isAfterLast()) {

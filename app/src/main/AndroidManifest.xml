@@ -23,8 +23,10 @@
             android:name=".AddBusStopActivity"
             android:label="@string/add_stop_number"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity
+            android:name=".LookUpActivity"
+            android:label="@string/title_activity_look_up"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

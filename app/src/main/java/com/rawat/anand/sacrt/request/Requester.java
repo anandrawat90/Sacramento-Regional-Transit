@@ -81,6 +81,9 @@ public class Requester {
                     message.setErrorFlag(true);
                     message.setErrorMessage(e.getMessage());
                     //e.printStackTrace();
+                } catch (Exception e) {
+                    message.setErrorFlag(true);
+                    message.setErrorMessage(e.getMessage());
                 }
 
             }

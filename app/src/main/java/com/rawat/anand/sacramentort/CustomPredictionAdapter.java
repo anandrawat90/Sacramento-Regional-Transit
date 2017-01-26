@@ -21,31 +21,6 @@ import java.util.List;
 
 public class CustomPredictionAdapter extends ArrayAdapter<BusStop> {
     private List<BusStop> allSavedStops;
-
-    public CustomPredictionAdapter(Context context, int resource, List<BusStop> objects) {
-        super(context, resource, objects);
-        allSavedStops = new ArrayList<BusStop>();
-        if(!objects.isEmpty())
-            allSavedStops.addAll(objects);
-    }
-
-    @NonNull
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customRow = inflater.inflate(R.layout.stop_prediction_list_item, parent, false);
-        BusStop stop = getItem(position);
-        TextView stopNumberDescTV = (TextView) customRow.findViewById(R.id.stopNumberDescTV);
-        stopNumberDescTV.setText(stop.toString());
-        return customRow;
-    }
-
-    @NonNull
-    @Override
-    public Filter getFilter() {
-        return customFilter;
-    }
-
     Filter customFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
@@ -77,6 +52,30 @@ public class CustomPredictionAdapter extends ArrayAdapter<BusStop> {
             }
         }
     };
+
+    public CustomPredictionAdapter(Context context, int resource, List<BusStop> objects) {
+        super(context, resource, objects);
+        allSavedStops = new ArrayList<BusStop>();
+        if (!objects.isEmpty())
+            allSavedStops.addAll(objects);
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View customRow = inflater.inflate(R.layout.stop_prediction_list_item, parent, false);
+        BusStop stop = getItem(position);
+        TextView stopNumberDescTV = (TextView) customRow.findViewById(R.id.stopNumberDescTV);
+        stopNumberDescTV.setText(stop.toString());
+        return customRow;
+    }
+
+    @NonNull
+    @Override
+    public Filter getFilter() {
+        return customFilter;
+    }
 
     public void setAllSavedStops(List<BusStop> allSavedStops) {
         this.allSavedStops = allSavedStops;

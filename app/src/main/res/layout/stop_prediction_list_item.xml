@@ -5,25 +5,25 @@
     android:orientation="vertical">
 
     <TextView
-        android:alpha="1"
         android:id="@+id/stopNumberDescTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:gravity="center_vertical"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:alpha="1"
         android:background="#003366"
-        android:textColor="#f6e806"
-        android:textAllCaps="true"
-        android:maxLines="20"
-        android:fontFamily="sans-serif"
-        android:lines="2"
         android:ellipsize="none"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:lines="2"
+        android:maxLines="20"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
         android:scrollHorizontally="false"
-        android:singleLine="false" />
+        android:singleLine="false"
+        android:text="TextView"
+        android:textAllCaps="true"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#f6e806" />
 
 </LinearLayout>
 

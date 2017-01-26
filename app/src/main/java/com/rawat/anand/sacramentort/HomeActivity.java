@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rawat.anand.db.BusStop;
@@ -52,17 +52,29 @@ public class HomeActivity extends AppCompatActivity {
         homeBusStopEdit = (AutoCompleteTextView) findViewById(R.id.homeActBNEdit);
         DBHandler dbHandler = new DBHandler(this, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
         stops = dbHandler.getAllBusStops();
-        if(stops == null)
+        if (stops == null)
             stops = new ArrayList<BusStop>();
-        busStopPrediction = new CustomPredictionAdapter(this,R.layout.stop_prediction_list_item,stops);
+        busStopPrediction = new CustomPredictionAdapter(this, R.layout.stop_prediction_list_item, stops);
         homeBusStopEdit.setAdapter(busStopPrediction);
+        homeBusStopEdit.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_ENTER || keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+                        homeActbutton.callOnClick();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
         homeBusStopEdit.setThreshold(1);
         homeActbutton = (Button) findViewById(R.id.homeActbutton);
         homeBusStopEdit.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               BusStop stop  = stops.get(position);
-               homeBusStopEdit.setText(String.valueOf(stop.getStopNumber()));
+                BusStop stop = busStopPrediction.getItem(position);
+                homeBusStopEdit.setText(String.valueOf(stop.getStopNumber()));
                 homeActbutton.callOnClick();
             }
         });
@@ -74,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onRestart();
         DBHandler dbHandler = new DBHandler(this, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
         stops = dbHandler.getAllBusStops();
-        if(stops == null)
+        if (stops == null)
             stops = new ArrayList<BusStop>();
         busStopPrediction.setAllSavedStops(stops);
         busStopPrediction.clear();
@@ -106,7 +118,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -127,5 +138,12 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void viewDatabase(View view) {
+        Intent addStopIntent = new Intent(this, AddBusStopActivity.class);
+        busStopNumber = homeBusStopEdit.getText().toString().trim();
+        addStopIntent.putExtra(Constants.STOP_NUMBER_MESSAGE, busStopNumber);
+        startActivity(addStopIntent);
     }
 }

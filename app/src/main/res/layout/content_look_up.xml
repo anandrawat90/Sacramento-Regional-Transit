@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_home"
+    android:id="@+id/content_look_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#003366"
@@ -11,23 +11,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.rawat.anand.sacramentort.HomeActivity"
-    tools:showIn="@layout/activity_home">
+    tools:context="com.rawat.anand.sacramentort.LookUpActivity"
+    tools:showIn="@layout/activity_look_up">
 
-    <TextView
-        android:id="@+id/homeActBusNumber"
+    <Button
+        android:id="@+id/lookupActBusNumberButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
+        android:background="@android:color/holo_blue_dark"
         android:fontFamily="serif"
+        android:padding="5dp"
         android:text="@string/stop_number"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#f6e806"
-        android:textSize="36sp"
+        android:textSize="24sp"
         android:textStyle="normal|bold" />
 
     <ListView
@@ -59,10 +56,10 @@
         android:id="@+id/homeActbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/homeActBusNumber"
+        android:layout_below="@+id/lookupActBusNumberButton"
         android:layout_marginLeft="250dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded_corner"
-        android:elevation="0dp"
         android:fontFamily="serif"
         android:onClick="queryStopNumber"
         android:padding="5dp"
@@ -72,18 +69,21 @@
         android:textSize="18sp"
         android:textStyle="normal|bold" />
 
-    <Button
-        android:id="@+id/homedbbutton"
+    <TextView
+        android:id="@+id/lookupdbTV"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:background="@android:color/holo_blue_dark"
         android:fontFamily="serif"
         android:padding="5dp"
         android:text="@string/saved_database_button"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#f6e806"
         android:textSize="24sp"
         android:textStyle="normal|bold" />
-
 
 </RelativeLayout>

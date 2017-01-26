@@ -11,6 +11,7 @@ public final class Constants {
     public final static String EMPTY_STRING_ERROR = " should not be empty";
     public final static String ERROR_SAVING_DATA = "An error was encountered while trying to save the data. Please try again later";
     public final static String SUCCESS_SAVING_DATA = "Data was saved successfully";
+    public final static String ENTER_KEY_LABEL = "Done";
 
     private Constants() {
     }

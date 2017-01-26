@@ -13,6 +13,7 @@ public final class DBConstants {
     public final static String COLUMN_STOPNUMBER = "stopnumber";
     public final static String COLUMN_DESCRIPTION = "description";
     public final static String SELECT_ALL_QUERY = "select * from busstop;";
+
     public DBConstants() {
     }
 

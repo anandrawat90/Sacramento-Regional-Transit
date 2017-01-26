@@ -11,7 +11,7 @@ public final class RequestConstants {
     public final static String ROUTE_DISPLAY_DESIGNATOR_TAG = "rd";
     public final static String NEXT_BUS_MINUTES_TAG = "nextbusminutes";
     public final static String NEXT_BUS_ON_ROUTINE_TAG = "nextbusonroutetime";
-    public final static String NO_PREDICTION_MESSAGE_TAG ="noPredictionMessage";
+    public final static String NO_PREDICTION_MESSAGE_TAG = "noPredictionMessage";
     public final static String REQUEST_URL = "http://bustime.sacrt.com/bustime/eta/getStopPredictionsETA.jsp?route=all&stop=";
     public final static String REQUEST_KEY = "&key=";
     public final static int CONNECTION_TIMEOUT_MILLI_SEC = 2000;
