@@ -26,6 +26,10 @@
         <activity
             android:name=".LookUpActivity"
             android:label="@string/title_activity_look_up"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EditStopActivity"
+            android:label="@string/title_activity_edit_stop"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

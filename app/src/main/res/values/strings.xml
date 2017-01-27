@@ -12,6 +12,8 @@
     <string name="title_activity_add_bus_stop">Add A Stop Number</string>
     <string name="university_to_howe">University</string>
     <string name="add_stop_button">Add Stop</string>
+    <string name="update_stop_button">Update Stop</string>
+    <string name="delete_stop_button">Delete Stop</string>
     <string name="query_stop_button">Search</string>
     <string name="title_activity_stop_database">Stop Database</string>
     <string name="saved_database_button">Lookup Bus Stops</string>
@@ -22,4 +24,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_look_up">Look Up</string>
+    <string name="title_activity_edit_stop">Edit Stop</string>
 </resources>

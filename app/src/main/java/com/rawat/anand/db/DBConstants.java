@@ -1,7 +1,7 @@
 package com.rawat.anand.db;
 
 /**
- * Created by Anu on 20-01-2017.
+ * Created by Anand Rawat on 20-01-2017.
  */
 
 public final class DBConstants {
@@ -13,6 +13,7 @@ public final class DBConstants {
     public final static String COLUMN_STOPNUMBER = "stopnumber";
     public final static String COLUMN_DESCRIPTION = "description";
     public final static String SELECT_ALL_QUERY = "select * from busstop;";
+    public final static String WHERE_ID_CLAUSE = COLUMN_ID + " = ";
 
     public DBConstants() {
     }

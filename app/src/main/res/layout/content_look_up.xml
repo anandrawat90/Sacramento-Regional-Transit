@@ -15,20 +15,21 @@
     tools:showIn="@layout/activity_look_up">
 
     <Button
-        android:id="@+id/lookupActBusNumberButton"
+        android:id="@+id/lookupActBusNumberBut"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
         android:background="@android:color/holo_blue_dark"
         android:fontFamily="serif"
+        android:onClick="openHomeActivity"
         android:padding="5dp"
         android:text="@string/stop_number"
         android:textSize="24sp"
         android:textStyle="normal|bold" />
 
     <ListView
-        android:id="@+id/homeActBusList"
+        android:id="@+id/lookupActBusList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/homeActBNEdit"
@@ -41,7 +42,7 @@
         android:id="@+id/homeActBNEdit"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/homeActbutton"
+        android:layout_alignBottom="@+id/lookupActbutton"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="2dp"
         android:background="?android:attr/editTextBackground"
@@ -53,10 +54,10 @@
         android:textColorLink="#BDBDBD" />
 
     <Button
-        android:id="@+id/homeActbutton"
+        android:id="@+id/lookupActbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lookupActBusNumberButton"
+        android:layout_below="@+id/lookupActBusNumberBut"
         android:layout_marginLeft="250dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_corner"

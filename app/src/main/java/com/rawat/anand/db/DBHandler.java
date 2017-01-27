@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Anu on 20-01-2017.
+ * Created by Anand Rawat on 20-01-2017.
  */
 
 public class DBHandler extends SQLiteOpenHelper {
@@ -46,10 +46,21 @@ public class DBHandler extends SQLiteOpenHelper {
         return flag;
     }
 
-    public boolean deleteBusStop(int busStop) {
+    public boolean deleteBusStop(int busStopID) {
         boolean flag;
         SQLiteDatabase db = getWritableDatabase();
-        flag = db.delete(DBConstants.TABLE_NAME_BUSSTOP, DBConstants.COLUMN_STOPNUMBER + " = ?", new String[]{String.valueOf(busStop)}) >= 0;
+        flag = db.delete(DBConstants.TABLE_NAME_BUSSTOP, DBConstants.WHERE_ID_CLAUSE + String.valueOf(busStopID), null) > 0;
+        db.close();
+        return flag;
+    }
+
+    public boolean editBusStop(BusStop busStop) {
+        boolean flag;
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DBConstants.COLUMN_STOPNUMBER, busStop.getStopNumber());
+        values.put(DBConstants.COLUMN_DESCRIPTION, busStop.getDescription());
+        flag = db.update(DBConstants.TABLE_NAME_BUSSTOP, values, DBConstants.WHERE_ID_CLAUSE + String.valueOf(busStop.get_id()), null) > 0;
         db.close();
         return flag;
     }
