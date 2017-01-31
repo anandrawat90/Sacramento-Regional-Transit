@@ -45,7 +45,7 @@ public class AddBusStopActivity extends AppCompatActivity {
                     addActStopNumberEV.setText("");
                     addActStopDescEV.setText("");
                     Utility.alertWithToast(Constants.SUCCESS_SAVING_DATA, this);
-                    DBUtility.isNotUpdated = true;
+                    DBUtility.getInstance().setIsNotUpdated(true);
                     finish();
                 } else
                     Utility.alertWithToast(Constants.ERROR_SAVING_DATA, this);

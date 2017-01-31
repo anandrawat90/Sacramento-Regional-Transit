@@ -49,7 +49,7 @@ public class EditStopActivity extends AppCompatActivity {
                     editActStopNumberEV.setText("");
                     editActDescEV.setText("");
                     Utility.alertWithToast(Constants.SUCCESS_SAVING_DATA, this);
-                    DBUtility.isNotUpdated = true;
+                    DBUtility.getInstance().setIsNotUpdated(true);
                     finish();
                 } else
                     Utility.alertWithToast(Constants.ERROR_SAVING_DATA, this);
@@ -62,7 +62,7 @@ public class EditStopActivity extends AppCompatActivity {
             editActStopNumberEV.setText("");
             editActDescEV.setText("");
             Utility.alertWithToast(Constants.SUCCESS_DELETING_DATA, this);
-            DBUtility.isNotUpdated = true;
+            DBUtility.getInstance().setIsNotUpdated(true);
             finish();
         } else
             Utility.alertWithToast(Constants.ERROR_DELETING_DATA, this);

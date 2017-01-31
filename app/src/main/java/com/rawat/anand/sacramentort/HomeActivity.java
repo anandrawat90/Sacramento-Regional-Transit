@@ -21,6 +21,8 @@ import com.rawat.anand.db.DBUtility;
 import com.rawat.anand.sacrt.request.Requester;
 import com.rawat.anand.sacrt.request.ResponseMessage;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity {
     private String busStopNumber = null;
     private ResponseMessage message = null;
@@ -30,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView homeBusListView = null;
     private CustomPredictionAdapter busStopPrediction = null;
     private Button homeActbutton = null;
+    private ArrayList<BusStop> aux = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,10 @@ public class HomeActivity extends AppCompatActivity {
         homeBusListView.setAdapter(listAdapter);
         errorInRequestToast = Toast.makeText(homeBusListView.getContext(), Constants.MISSING_STOP_NUMBER_ERROR, Toast.LENGTH_LONG);
         homeBusStopEdit = (AutoCompleteTextView) findViewById(R.id.homeActBNEdit);
-        DBUtility.loadDBStops(this);
-        busStopPrediction = new CustomPredictionAdapter(this, R.layout.stop_prediction_list_item, DBUtility.stops);
+        DBUtility.getInstance().loadDBStops(this);
+        aux = new ArrayList<>();
+        aux.addAll(DBUtility.getInstance().getStops());
+        busStopPrediction = new CustomPredictionAdapter(this, R.layout.stop_prediction_list_item, aux);
         homeBusStopEdit.setAdapter(busStopPrediction);
         homeBusStopEdit.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -76,10 +81,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        DBUtility.loadDBStops(this);
-        busStopPrediction.setAllSavedStops(DBUtility.stops);
+        DBUtility.getInstance().loadDBStops(this);
+        busStopPrediction.setAllSavedStops(DBUtility.getInstance().getStops());
         busStopPrediction.clear();
-        busStopPrediction.addAll(DBUtility.stops);
+        aux.clear();
+        aux.addAll(DBUtility.getInstance().getStops());
+        busStopPrediction.addAll(aux);
     }
 
     public void addCurrentStop(View view) {
@@ -127,13 +134,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void viewDatabase(View view) {
-        Intent addStopIntent = new Intent(this, AddBusStopActivity.class);
-        busStopNumber = homeBusStopEdit.getText().toString().trim();
-        addStopIntent.putExtra(Constants.STOP_NUMBER_MESSAGE, busStopNumber);
-        startActivity(addStopIntent);
     }
 
     public void openLookUpActivity(View view) {

@@ -21,11 +21,12 @@ import java.util.List;
 
 public class CustomPredictionAdapter extends ArrayAdapter<BusStop> {
     private List<BusStop> allSavedStops;
+
     Filter customFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             if (constraint != null) {
-                ArrayList<BusStop> suggestions = new ArrayList<BusStop>();
+                ArrayList<BusStop> suggestions = new ArrayList<>();
                 for (BusStop contender : allSavedStops) {
                     if (contender.toString().toLowerCase().contains(constraint.toString().toLowerCase())) {
                         suggestions.add(contender);
@@ -55,7 +56,7 @@ public class CustomPredictionAdapter extends ArrayAdapter<BusStop> {
 
     public CustomPredictionAdapter(Context context, int resource, List<BusStop> objects) {
         super(context, resource, objects);
-        allSavedStops = new ArrayList<BusStop>();
+        allSavedStops = new ArrayList<>();
         if (!objects.isEmpty())
             allSavedStops.addAll(objects);
     }
@@ -78,6 +79,8 @@ public class CustomPredictionAdapter extends ArrayAdapter<BusStop> {
     }
 
     public void setAllSavedStops(List<BusStop> allSavedStops) {
+       /* this.allSavedStops.clear();
+        this.allSavedStops.addAll(allSavedStops);*/
         this.allSavedStops = allSavedStops;
     }
 }

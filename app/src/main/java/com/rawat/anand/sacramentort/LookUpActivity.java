@@ -32,7 +32,7 @@ public class LookUpActivity extends AppCompatActivity {
         busStopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                stop = DBUtility.stops.get(position);
+                stop = DBUtility.getInstance().getStops().get(position);
                 openEditActivity(busStopList.getContext());
             }
         });
@@ -41,14 +41,14 @@ public class LookUpActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        boolean flag = DBUtility.isNotUpdated;
-        DBUtility.loadDBStops(this);
+        boolean flag = DBUtility.getInstance().isNotUpdated();
+        DBUtility.getInstance().loadDBStops(this);
         if (flag) {
             listViewAdapter.clear();
-            listViewAdapter.addAll(DBUtility.stops);
+            listViewAdapter.addAll(DBUtility.getInstance().getStops());
         }
         if (notCreated)
-            listViewAdapter.addAll(DBUtility.stops);
+            listViewAdapter.addAll(DBUtility.getInstance().getStops());
         notCreated = false;
     }
 

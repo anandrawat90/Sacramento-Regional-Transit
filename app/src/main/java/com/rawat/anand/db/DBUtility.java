@@ -11,10 +11,23 @@ import java.util.List;
 
 public final class DBUtility {
 
-    public static List<BusStop> stops = null;
-    public static boolean isNotUpdated = true;
+    private final static Object mlock = new Object();
+    private static DBUtility instance = null;
+    private List<BusStop> stops = null;
+    private boolean isNotUpdated = true;
 
-    public static void loadDBStops(Context con) {
+    private DBUtility() {
+    }
+
+    public static DBUtility getInstance() {
+        if (instance == null)
+            synchronized (mlock) {
+                instance = new DBUtility();
+            }
+        return instance;
+    }
+
+    public void loadDBStops(Context con) {
         if (isNotUpdated || stops == null) {
             DBHandler dbHandler = new DBHandler(con, DBConstants.DATABASE_NAME, null, DBConstants.DATABASE_VERSION);
             stops = dbHandler.getAllBusStops();
@@ -23,4 +36,19 @@ public final class DBUtility {
         if (stops == null)
             stops = new ArrayList<BusStop>();
     }
+
+    public boolean isNotUpdated() {
+        return this.isNotUpdated;
+    }
+
+    public void setIsNotUpdated(boolean isNotUpdated) {
+        synchronized (mlock) {
+            this.isNotUpdated = isNotUpdated;
+        }
+    }
+
+    public List<BusStop> getStops() {
+        return this.stops;
+    }
+
 }
