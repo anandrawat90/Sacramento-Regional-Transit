@@ -101,15 +101,9 @@ public class HomeActivity extends AppCompatActivity {
         if (busStopNumber == null || busStopNumber.isEmpty())
             errorInRequestToast.show();
         else {
-            Requester req = new Requester();
-            message = req.getInfo(new String[]{busStopNumber});
-            listAdapter.clear();
-            if (message != null && !message.isErrorFlag() && !message.getResponse().isEmpty())
-                listAdapter.addAll(message.getResponse());
-            else {
-                errorInRequestToast.setText(message.getErrorMessage());
-                errorInRequestToast.show();
-            }
+            Requester req = new Requester(busStopNumber, listAdapter, errorInRequestToast);
+            req.execute();
+
         }
     }
 
