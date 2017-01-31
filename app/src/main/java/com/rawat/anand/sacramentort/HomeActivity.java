@@ -102,7 +102,7 @@ public class HomeActivity extends AppCompatActivity {
             errorInRequestToast.show();
         else {
             Requester req = new Requester();
-            message = req.getInfo(new String[]{busStopNumber});
+            message = req.getInfo(busStopNumber);
             listAdapter.clear();
             if (message != null && !message.isErrorFlag() && !message.getResponse().isEmpty())
                 listAdapter.addAll(message.getResponse());
