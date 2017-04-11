@@ -96,6 +96,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(addStopIntent);
     }
 
+
     public void queryStopNumber(View view) {
         busStopNumber = homeBusStopEdit.getText().toString().trim();
         if (busStopNumber == null || busStopNumber.isEmpty())
